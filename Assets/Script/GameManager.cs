@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public GameObject creditScene;
     public TextMeshProUGUI scoreText;
-    public GameObject titleScreenUI;     // Drag the Title Screen UI Canvas here
-    public GameObject gameOverScreenUI;  // Drag the Game Over Screen UI Canvas here
+    public GameObject titleScreenUI;     
+    public GameObject gameOverScreenUI;  
     public GameObject gameWinScreenUI;
     private int currentLives = 0;
     private int maxLives = 5;
@@ -16,9 +16,9 @@ public class GameManager : MonoBehaviour
     private bool gameIsOver = false;
     private void Awake()
     {
-        Time.timeScale = 0f; // หยุดเกมไว้ตอนเริ่ม
+        Time.timeScale = 0f; 
         gameIsOver = false;
-        gameOverScreenUI.SetActive(false); // ซ่อน Game Over Screen ไว้ตอนเริ่ม
+        gameOverScreenUI.SetActive(false); 
         gameWinScreenUI.SetActive(false);
         creditScene.SetActive(false);
         if (scoreText != null)
@@ -31,8 +31,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayGame()
     {
-        titleScreenUI.SetActive(false); // ซ่อน Title Screen
-        Time.timeScale = 1f; // เริ่มเกม
+        titleScreenUI.SetActive(false); 
+        Time.timeScale = 1f; 
         if (scoreText != null)
         {
             scoreText.gameObject.SetActive(true);
@@ -44,14 +44,14 @@ public class GameManager : MonoBehaviour
         if (gameIsOver) return;
 
         gameIsOver = true;
-        Time.timeScale = 0f; // หยุดเกมเมื่อแพ้
-        gameOverScreenUI.SetActive(true); // แสดง Game Over Screen
+        Time.timeScale = 0f; 
+        gameOverScreenUI.SetActive(true); 
     }
 
     public void ReplayGame()
     {
-        Time.timeScale = 1f; // ทำให้เวลาเดินตามปกติ
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // โหลด Scene ปัจจุบันใหม่ (Restart)
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 
     public void WinGame()
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameWinScreenUI.SetActive(true);
     }
-    public void AddLives()  // เรียกใช้ฟังก์ชันนี้เมื่ออุกกาบาตชนกล่อง
+    public void AddLives()  
     {
         currentLives++;
         UpdateLivesUI();
